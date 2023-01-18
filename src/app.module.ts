@@ -24,8 +24,7 @@ import { EnvConfiguration } from './config/app.config';
 
 
     MongooseModule.forRoot( process.env.MONGODB ),
-    //MongooseModule.forRoot('mongodb+srv://icastror:Sharid16*@cluster0.5uorg.mongodb.net/nest-pokemon?retryWrites=true&w=majority'),
-
+    
     PokemonModule,
 
     CommonModule,

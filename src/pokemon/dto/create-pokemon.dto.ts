@@ -13,4 +13,9 @@ export class CreatePokemonDto {
     @MinLength(1)
     name: string;
 
+    // isString, MinLength 
+    @IsString()
+    @MinLength(1)
+    url: string;
+
 }

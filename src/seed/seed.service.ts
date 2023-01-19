@@ -23,9 +23,9 @@ export class SeedService {
     await this.pokemonModel.deleteMany({}); // delete * from pokemon
 
     const data = await this.http.get<PokeResponse>(`https://pokeapi.co/api/v2/pokemon?limit=650`);
-
+    // console.log('Data: ==>', data);
     //const insertPromiseArray = [];
-    const pokemonToInsert: { name: string, no: number  }[] = [];
+    const pokemonToInsert: { name: string, no: number, url: string }[] = [];
 
 
     data.results.forEach( async ( { name, url } ) => {
@@ -37,15 +37,15 @@ export class SeedService {
       /*insertPromiseArray.push( 
         this.pokemonModel.create( {name, no } ) 
       );*/
-
-      pokemonToInsert.push({ name, no})  
- 
+      pokemonToInsert.push({ name, no, url});
     });
 
      //await Promise.all( insertPromiseArray  );
      await this.pokemonModel.insertMany( pokemonToInsert );
 
-    return `Seed Executed`;
+    return {
+              msg: `Seed Executed`,
+           };
   }
 
 }
